@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ByteBank.Modelos\ByteBank.Modelos.csproj">
-      <Project>{748013b7-f4f1-4795-96d1-41e4273f1dd6}</Project>
+      <Project>{748013B7-F4F1-4795-96D1-41E4273F1DD6}</Project>
       <Name>ByteBank.Modelos</Name>
     </ProjectReference>
   </ItemGroup>
