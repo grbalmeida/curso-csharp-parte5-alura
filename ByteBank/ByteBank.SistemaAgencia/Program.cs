@@ -1,5 +1,7 @@
 ﻿using ByteBank.Modelos;
+using Humanizer;
 using System;
+using System.Globalization;
 
 namespace ByteBank.SistemaAgencia
 {
@@ -7,37 +9,21 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
-            DateTime dataFimPagamento = new DateTime(2020, 9, 20);
-            DateTime dataCorrente = DateTime.Now;
+            TimeSpan trintaSegundos = TimeSpan.FromSeconds(30);
+            TimeSpan umaHora = TimeSpan.FromMinutes(60);
+            TimeSpan duasHoras = TimeSpan.FromHours(2);
 
-            TimeSpan diferenca = dataFimPagamento - dataCorrente;
+            CultureInfo culture = new CultureInfo("pt-BR");
 
-            string mensagem = "Vencimento em " + GetIntervaloDeTempoLegivel(diferenca);
+            string mensagemTrintaSegundos = "Vencimento em " + TimeSpanHumanizeExtensions.Humanize(trintaSegundos, 1, culture);
+            string mensagemUmaHora = "Vencimento em " + TimeSpanHumanizeExtensions.Humanize(umaHora, 1, culture);
+            string mensagemDuasHoras = "Vencimento em " + TimeSpanHumanizeExtensions.Humanize(duasHoras, 1, culture);
 
-            Console.WriteLine(mensagem);
+            Console.WriteLine(mensagemTrintaSegundos);
+            Console.WriteLine(mensagemUmaHora);
+            Console.WriteLine(mensagemDuasHoras);
 
             Console.ReadLine();
-        }
-
-        static string GetIntervaloDeTempoLegivel(TimeSpan timeSpan)
-        {
-            if (timeSpan.Days > 30)
-            {
-                int quantidadeMeses = timeSpan.Days / 30;
-                
-                if (quantidadeMeses == 1)
-                {
-                    return "1 mês";
-                }
-                
-                return quantidadeMeses + " meses";
-            }
-            else if (timeSpan.Days > 7)
-            {
-                int quantidadeSemanas = timeSpan.Days / 7;
-            }
-
-            return timeSpan.Days + " dias";
         }
     }
 }
